@@ -41,10 +41,10 @@ public class DefaultController {
 
         switch (request.getMethod()) {
             case "POST":
-                response = service.post(headers, path, ConverterUtil.convertToJson(body));
+                response = service.post(headers, path, ConverterUtil.convertToJson(body.substring(1,body.length()-1).replaceAll("\\\\", "")));
                 break;
             case "PUT":
-                response = service.put(headers, path, ConverterUtil.convertToJson(body));
+                response = service.put(headers, path, ConverterUtil.convertToJson(body.substring(1,body.length()-1).replaceAll("\\\\", "")));
                 break;
             case "GET":
                 response = service.get(headers, path);
